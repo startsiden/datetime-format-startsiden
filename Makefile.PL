@@ -1,6 +1,6 @@
 use inc::Module::Install;
 
-name 'DateTime::Format::Startsiden';
+name 'DateTime-Format-Startsiden';
 
 # These override things fetched by 'all_from' below.
 # They must come *before* the call to 'all_from'.
