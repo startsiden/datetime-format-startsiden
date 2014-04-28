@@ -11,6 +11,7 @@ all_from 'lib/DateTime/Format/Startsiden.pm';
 
 configure_requires 'Module::Install' => 0;
 
+requires 'CHI';
 requires 'DateTime';
 requires 'DateTime::Format::RSS';
 test_requires 'Test::More';

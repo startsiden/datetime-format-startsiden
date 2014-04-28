@@ -1,6 +1,8 @@
 package DateTime::Format::Startsiden;
 
 use Carp;
+use CHI;
+
 use DateTime::Format::RSS;
 use DateTime::TimeZone;
 
@@ -8,15 +10,21 @@ use strict;
 use vars qw($VERSION);
 $VERSION = '0.01';
 
+my $cache = CHI->new( driver => 'Memory', global => 1, max_size => 1024 * 1024 );
 my $fmt = DateTime::Format::RSS->new;
 
 sub parse_datetime {
     my ($class, $string, $opts) = @_;
     $opts //= {};
 
-    my $dt = eval { 
-        $fmt->parse_datetime($string) or die("Invalid date format: '$string'\n");
+    my $dt = $cache->get($string);
+    return $dt if $dt;
+
+    eval { 
+        $dt = $fmt->parse_datetime($string) or die("Invalid date format: '$string'\n");
+        $cache->set($string, $dt);
     };
+
 
     return $dt || _error($@, $opts);
 }
@@ -24,14 +32,18 @@ sub parse_datetime {
 sub parse_url {
     my ($class, $url, $opts) = @_;
 
+    my $dt = $cache->get($url);
+    return $dt if $dt;
+
     my ($year, $month, $day) = ($url =~ m{ /? (\d{4}) (?: /? (\d{1,2}) )? (?: /? (\d{1,2}) )?}gmx);
-    my $dt = eval { 
+    eval { 
         if ($year) {
-           DateTime->new(
+           $dt = DateTime->new(
               ( $year  ? ( year  => $year  ) : () ),
               ( $month ? ( month => $month ) : () ),
               ( $day   ? ( day   => $day   ) : () ),
            );
+           $cache->set($url, $dt);
         }
     };
     return $dt || _error("Invalid date format: '$url'\n", $opts);;
