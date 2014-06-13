@@ -8,7 +8,7 @@ use Test::More;
 
 use_ok('DateTime::Format::Startsiden');
 
-#parse_datetime
+# parse_datetime
 {
   my $dt = DateTime::Format::Startsiden->parse_datetime('2014-04-01T12:34:56+00:00'); 
   is($dt, '2014-04-01T12:34:56', '2014-04-01T12:34:56+00:00 => 2014-04-01T12:34:56');
@@ -27,6 +27,11 @@ use_ok('DateTime::Format::Startsiden');
 {
    my $dt = DateTime::Format::Startsiden->parse_datetime('abc'); 
    ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
+  my $dt = DateTime::Format::Startsiden->parse_datetime('Tue, 17 Jun 2014 15:40:00 +0200'); 
+  is($dt, '2014-06-17T15:40:00', 'Tue, 17 Jun 2014 15:40:00 +0200 => 2014-06-17T15:40:00');
 };
 
 {
