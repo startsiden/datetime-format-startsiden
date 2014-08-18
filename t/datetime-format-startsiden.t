@@ -74,6 +74,16 @@ use_ok('DateTime::Format::Startsiden');
 };
 
 {
+   my $dt = DateTime::Format::Startsiden->parse_url(''); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
+   my $dt = DateTime::Format::Startsiden->parse_url(); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
   dies_ok
     {
       my $dt = DateTime::Format::Startsiden->parse_url('abc', { fatal => 1 } ); 

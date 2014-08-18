@@ -8,7 +8,7 @@ use DateTime::TimeZone;
 
 use strict;
 use vars qw($VERSION);
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 my $cache = CHI->new( driver => 'Memory', global => 1, max_size => 1024 * 1024 );
 my $fmt = DateTime::Format::RSS->new;
@@ -32,7 +32,7 @@ sub parse_datetime {
 sub parse_url {
     my ($class, $url, $opts) = @_;
 
-    my $dt = $cache->get($url);
+    my $dt = eval { $cache->get($url); };
     return $dt if $dt;
 
     my ($year, $month, $day) = ($url =~ m{ /? (\d{4}) (?: /? (\d{1,2}) )? (?: /? (\d{1,2}) )?}gmx);
