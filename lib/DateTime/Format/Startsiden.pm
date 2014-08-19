@@ -17,7 +17,7 @@ sub parse_datetime {
     my ($class, $string, $opts) = @_;
     $opts //= {};
 
-    my $dt = $cache->get($string);
+    my $dt = eval { $cache->get($string); };
     return $dt if $dt;
 
     eval { 
