@@ -30,6 +30,16 @@ use_ok('DateTime::Format::Startsiden');
 };
 
 {
+   my $dt = DateTime::Format::Startsiden->parse_datetime(''); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
+   my $dt = DateTime::Format::Startsiden->parse_datetime(); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
   my $dt = DateTime::Format::Startsiden->parse_datetime('Tue, 17 Jun 2014 15:40:00 +0200'); 
   is($dt, '2014-06-17T15:40:00', 'Tue, 17 Jun 2014 15:40:00 +0200 => 2014-06-17T15:40:00');
 };
@@ -70,6 +80,16 @@ use_ok('DateTime::Format::Startsiden');
 
 {
    my $dt = DateTime::Format::Startsiden->parse_url('abc'); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
+   my $dt = DateTime::Format::Startsiden->parse_url(''); 
+   ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
+};
+
+{
+   my $dt = DateTime::Format::Startsiden->parse_url(); 
    ok(ref $dt eq 'DateTime', 'invalid date returns a datetime object by default');
 };
 
