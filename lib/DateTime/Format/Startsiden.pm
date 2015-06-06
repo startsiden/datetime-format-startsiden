@@ -8,7 +8,7 @@ use DateTime::TimeZone;
 
 use strict;
 use vars qw($VERSION);
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 my $cache = CHI->new( driver => 'Memory', global => 1, max_size => 1024 * 1024 );
 my $fmt = DateTime::Format::RSS->new;
@@ -17,26 +17,34 @@ sub parse_datetime {
     my ($class, $string, $opts) = @_;
     $opts //= {};
 
-    my $dt = eval { $cache->get($string); };
+    my $dt = eval {
+        local $SIG{__DIE__};
+        $cache->get($string);
+    };
+
     return $dt if $dt;
 
-    eval { 
+    eval {
+        local $SIG{__DIE__};
         $dt = $fmt->parse_datetime($string) or die("Invalid date format: '$string'\n");
         $cache->set($string, $dt);
     };
 
-
-    return $dt || _error($@, $opts);
+    return (defined $dt) ? $dt : _error($@, $opts);
 }
 
 sub parse_url {
     my ($class, $url, $opts) = @_;
 
-    my $dt = eval { $cache->get($url); };
+    my $dt = eval {
+        local $SIG{__DIE__};
+        $cache->get($url);
+    };
     return $dt if $dt;
 
     my ($year, $month, $day) = ($url =~ m{ /? (\d{4}) (?: /? (\d{1,2}) )? (?: /? (\d{1,2}) )?}gmx);
-    eval { 
+    eval {
+        local $SIG{__DIE__};
         if ($year) {
            $dt = DateTime->new(
               ( $year  ? ( year  => $year  ) : () ),
@@ -46,7 +54,7 @@ sub parse_url {
            $cache->set($url, $dt);
         }
     };
-    return $dt || _error("Invalid date format: '$url'\n", $opts);;
+    return (defined $dt) ? $dt : _error("Invalid date format: '$url'\n", $opts);;
 }
 
 sub _error {
