@@ -1,4 +1,0 @@
-name = "datetime-format-startsiden"
-# badges = ["travis"]
-module_maker="ModuleBuildTiny"
-
