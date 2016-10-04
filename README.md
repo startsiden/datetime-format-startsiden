@@ -35,7 +35,7 @@ You can override the fallback, by using the callback parameter and return either
 
 - `parse_datetime($string, $opts)`
 
-    The `parse_datetime` method tries to parse the string and returns a DateTime object. 
+    The `parse_datetime` method tries to parse the string and returns a DateTime object.
 
     If failing to parse the string as a date it defaults to return `DateTime-`new()>
 
@@ -77,8 +77,7 @@ Please report any bugs or feature requests to http://bugs.startsiden.no/,
 
 You can find documentation for this module with the perldoc command.
 
-       perldoc DateTime::Format::Startsiden
-    
+    perldoc DateTime::Format::Startsiden
 
 # AUTHOR
 

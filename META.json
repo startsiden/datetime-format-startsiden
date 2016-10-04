@@ -4,7 +4,7 @@
       "Nicolas Mendoza, C<< <nicolas.mendoza@startsiden.no> >>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.16, Dist::Zilla version 6.007, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Dist::Milla version v1.0.16, Dist::Zilla version 6.006, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "restricted"
    ],
@@ -45,10 +45,9 @@
       },
       "runtime" : {
          "requires" : {
-            "CHI" : "0.58",
+            "CHI" : "0",
             "DateTime" : "0",
-            "DateTime::Format::RSS" : "0",
-            "perl" : "5.010001"
+            "DateTime::Format::RSS" : "0"
          }
       }
    },
@@ -64,8 +63,9 @@
          "web" : "https://github.com/startsiden/datetime-format-startsiden"
       }
    },
-   "version" : "1.02",
+   "version" : "1.03",
    "x_contributors" : [
+      "espizo <espen.borgen@startsiden.no>",
       "msetek <martin@setek.org>",
       "Nicolas Mendoza <mendoza@pvv.ntnu.no>",
       "Tore Aursand <toreau@gmail.com>"
