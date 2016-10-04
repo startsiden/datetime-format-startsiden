@@ -63,7 +63,7 @@
          "web" : "https://github.com/startsiden/datetime-format-startsiden"
       }
    },
-   "version" : "1.02",
+   "version" : "1.03",
    "x_contributors" : [
       "espizo <espen.borgen@startsiden.no>",
       "msetek <martin@setek.org>",
