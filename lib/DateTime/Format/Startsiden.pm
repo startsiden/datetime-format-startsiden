@@ -8,7 +8,7 @@ use DateTime::TimeZone;
 
 use strict;
 use vars qw($VERSION);
-$VERSION = '1.03';
+$VERSION = '1.04';
 
 my $cache = CHI->new( driver => 'Memory', global => 1, max_size => 1024 * 1024 );
 my $fmt = DateTime::Format::RSS->new;
