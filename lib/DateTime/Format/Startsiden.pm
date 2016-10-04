@@ -73,11 +73,13 @@ sub _error {
 __END__
 
 =pod
- 
+
+=encoding utf-8
+
 =head1 NAME
- 
+
 DateTime::Format::Startsiden - Parse and format various datetime strings
- 
+
 =head1 VERSION
 
 Version 0.01
@@ -108,12 +110,12 @@ which in turn uses various DateTime::Format modules to parse whatever it gets. I
 You can override the fallback, by using the callback parameter and return either nothing to get DateTime->now() or whatever is suitable for your project.
 
 =head1 METHODS
- 
+
 =over
- 
+
 =item C<parse_datetime($string, $opts)>
 
-The C<parse_datetime> method tries to parse the string and returns a DateTime object. 
+The C<parse_datetime> method tries to parse the string and returns a DateTime object.
 
 If failing to parse the string as a date it defaults to return C<DateTime->new()>
 
@@ -132,48 +134,48 @@ Options:
  * Same as C<parse_datetime()>
 
 =item C<format_datetime($datetime, $opts)>
- 
+
 TODO: Not implemented
- 
+
 For simplicity, the datetime will be converted to UTC first.
- 
+
 =back
- 
+
 =head1 SEE ALSO
- 
+
 =over 4
- 
+
 =item * L<DateTime>
- 
+
 =item * L<DateTime::Format::RSS>
 
 =item * L<DateTime::Format::RFC3339>
- 
+
 =item * L<DateTime::Format::ISO8601>
 
 =item * L<DateTime::Format::Parse>
- 
+
 =item * L<http://tools.ietf.org/html/rfc3339>, "Date and Time on the Internet: Timestamps"
- 
+
 =item * L<http://tools.ietf.org/html/rfc4287>, "The Atom Syndication Format"
- 
+
 =back
- 
- 
+
+
 =head1 BUGS
- 
+
 Please report any bugs or feature requests to http://bugs.startsiden.no/,
- 
+
 =head1 SUPPORT
- 
+
 You can find documentation for this module with the perldoc command.
- 
+
     perldoc DateTime::Format::Startsiden
- 
+
 =head1 AUTHOR
- 
+
 Nicolas Mendoza, C<< <nicolas.mendoza@startsiden.no> >>
- 
+
 =head1 COPYRIGHT & LICENSE
 
 All Rights reserved to ABC Startsiden © 2014
